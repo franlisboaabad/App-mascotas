@@ -84,8 +84,15 @@
                                     </div>
                                     <ul class="header-links">
                                         {{-- <li><a href="cart.html"><i class="fas fa-car-alt"></i> Track Your Order</a></li> --}}
-                                        <li><a href="/login"><i class="fas fa-user"></i> Acceder </a></li>
-                                        <li><a href="/register"><i class="fas fa-user"></i> Registro </a></li>
+                                        @if (Auth::check())
+                                            <!-- El usuario ha iniciado sesión, muestra su email -->
+                                            <p>Bienvenido, {{ Auth::user()->email }} | <a href="{{  Auth::logout() }}">Salir</a></p>
+                                        @else
+                                            <!-- El usuario no ha iniciado sesión, muestra los enlaces de acceso y registro -->
+                                            <li><a href="/login"><i class="fas fa-user"></i> Acceder</a></li>
+                                            <li><a href="/registro"><i class="fas fa-user"></i> Registro</a></li>
+                                        @endif
+
                                     </ul>
                                 </div>
                             </div>

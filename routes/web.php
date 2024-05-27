@@ -33,6 +33,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//rutas pages registro
+// Mostrar formulario de registro
+Route::get('/registro', [PageController::class,'PageRegister'])->name('pageregistro');
+// Procesar el formulario de registro
+Route::post('/registro', [PageController::class,'register'])->name('registro');
+
 
 
 Route::resource('usuarios',UserController::class)->middleware('auth');
