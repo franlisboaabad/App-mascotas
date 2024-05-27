@@ -334,7 +334,6 @@ return [
                 [
                     'text'        => 'Usuarios',
                     'route'         => 'usuarios.index',
-                    'icon'        => 'fa fa-users',
                     'can'  => 'admin.usuarios.index',
                 ],
 
@@ -343,6 +342,11 @@ return [
                     'route'  => 'roles.index',
                     'can' => 'admin.roles.index'
                 ],
+                [
+                    'text' => 'Website',
+                    'route'  => 'home',
+                ]
+
             ],
 
         ]

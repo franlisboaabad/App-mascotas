@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mascota;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MascotaController extends Controller
 {
@@ -98,7 +99,18 @@ class MascotaController extends Controller
         ]);
 
         $mascota->update($request->all());
-        return back()->with('success', 'Se actualizo la mascota correctamente.');
+
+        if ($request->file('imagen')) {
+            // Elimina la imagen anterior si existe
+            Storage::disk('public')->delete($mascota->imagen);
+
+            // Almacena la nueva imagen
+            $mascota->imagen = $request->file('imagen')->store('mascotas', 'public');
+        }
+
+        $mascota->save();
+
+        return back()->with('success', 'Se actualizó la mascota correctamente.');
     }
 
     /**

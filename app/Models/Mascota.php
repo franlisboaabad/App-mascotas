@@ -11,5 +11,11 @@ class Mascota extends Model
 
     protected $fillable = ['nombre', 'especie', 'raza', 'edad', 'descripcion', 'imagen', 'estado'];
 
+    public function getGetImagenAttribute()
+    {
+        if ($this->imagen) {
+            return url("storage/$this->imagen");
+        }
+    }
 
 }

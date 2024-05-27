@@ -81,6 +81,17 @@
                 </div>
             </div>
         </div>
+
+        @if ($mascota->get_imagen)
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ $mascota->get_imagen }}" class="img-fluid" alt="" width="300">
+                    </div>
+                </div>
+            </div>
+        @endif
+
     </div>
 @stop
 
