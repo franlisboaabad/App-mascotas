@@ -14,7 +14,8 @@ class ReportCasoController extends Controller
      */
     public function index()
     {
-        //
+        $reportes = ReportCaso::get();
+        return view('admin.reportes.index', compact('reportes'));
     }
 
     /**

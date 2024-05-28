@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
         if ($user->hasRole('Admin')) {
             return redirect()->route('dashboard'); // Redirige al dashboard para los administradores
         } elseif ($user->hasRole('Writer')) {
-            return redirect()->route('panel'); // Redirige a la página principal para los escritores
+            return redirect()->route('panel',$user->id); // Redirige a la página principal para los escritores
         } else {
             // Si el usuario no tiene un rol específico, redirige a una ruta predeterminada
             return redirect()->intended(RouteServiceProvider::HOME);

@@ -318,13 +318,20 @@ return [
             'icon'        => 'fa fa-cube',
         ],
 
-
         [
-            'text'        => 'Invitados',
-            'route'         => 'invitados.index',
-            'icon'        => 'fa fa-users',
-            'can'  => 'admin.invitados.index',
+            'text'        => 'Registro de casos',
+            'route'         => 'reportes.index',
+            'icon'        => 'fa fa-envelope',
         ],
+
+
+
+        // [
+        //     'text'        => 'Invitados',
+        //     'route'         => 'invitados.index',
+        //     'icon'        => 'fa fa-users',
+        //     'can'  => 'admin.invitados.index',
+        // ],
 
         ['header' => 'account_settings'],
         [

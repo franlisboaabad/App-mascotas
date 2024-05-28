@@ -40,9 +40,12 @@ class PageController extends Controller
         return view('page.reportarcaso');
     }
 
-    public function panel()
+    public function panel($id)
     {
-        return view('page.panel');
+        $user = User::find($id);
+        $casos_reportados = ReportCaso::get()->where('user_id', $user->id );
+
+        return view('page.panel', compact('casos_reportados'));
     }
 
 

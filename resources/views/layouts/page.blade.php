@@ -105,7 +105,7 @@
                                         {{-- <li><a href="cart.html"><i class="fas fa-car-alt"></i> Track Your Order</a></li> --}}
                                         @if (Auth::check())
                                             <!-- El usuario ha iniciado sesión, muestra su email -->
-                                            <p>Bienvenido, {{ Auth::user()->name }} | <a href="{{ route('panel') }}"><i class="fas fa-user"></i> Panel</a>
+                                            <p>Bienvenido, {{ Auth::user()->name }} | <a href="{{ route('panel', Auth::user()->id ) }}"><i class="fas fa-user"></i> Panel</a>
                                         @else
                                             <!-- El usuario no ha iniciado sesión, muestra los enlaces de acceso y registro -->
                                             <li><a href="{{ route('acceso') }}"><i class="fas fa-user"></i> Acceder</a>

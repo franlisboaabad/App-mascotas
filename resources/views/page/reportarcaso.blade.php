@@ -1,5 +1,5 @@
 @extends('layouts.page')
-@section('titulo','Reportar un caso')
+@section('titulo', 'Reportar un caso')
 @section('contenido')
     <div class="container">
 
@@ -84,9 +84,11 @@
                 </div>
             </div>
         @else
-            <h2>Debes loguearte para poder reportar un caso.</h2>
-            <a href="{{ route('acceso') }}">Acceder</a> |
-            <a href="{{ route('registro') }}">Registrarme</a>
+            <div class="accesos">
+                <h2>Debes loguearte para poder reportar un caso.</h2> <br>
+                <a href="{{ route('acceso') }}" class="btn btn-primary btn-xs">Acceder</a> |
+                <a href="{{ route('registro') }}" class="btn btn-success btn-xs">Registrarme</a>
+            </div>
         @endif
 
     </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InvitadoController;
+use App\Http\Controllers\ReportCasoController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PageController;
@@ -43,28 +44,33 @@ Route::post('/registro', [PageController::class,'register'])->name('registro');
 
 //Acceso
 Route::get('/acceso', [PageController::class,'acceso'])->name('acceso');
-Route::get('/panel-usuario', [PageController::class,'panel'])->name('panel');
+Route::get('/panel-usuario/{id}', [PageController::class,'panel'])->name('panel');
 Route::get('/logout', [PageController::class, 'logout'])->name('logout');
 
 //Pages
-Route::get('/',[PageController::class, 'home'])->name('home');
-Route::get('reportar-caso',[PageController::class,'reportarcaso'])->name('reportarcaso');
-Route::post('registrar-caso',[PageController::class,'registrarcaso'])->name('registrarcaso');
+// Route::get('/',[PageController::class, 'home'])->name('home');
+// Route::get('reportar-caso',[PageController::class,'reportarcaso'])->name('reportarcaso');
+// Route::post('registrar-caso',[PageController::class,'registrarcaso'])->name('registrarcaso');
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', [PageController::class, 'home'])->name('home');
+    Route::get('reportar', [PageController::class, 'reportarcaso'])->name('reportarcaso');
+    Route::post('registrar', [PageController::class, 'registrarcaso'])->name('registrarcaso');
+});
 
 
-Route::resource('usuarios',UserController::class)->middleware('auth');
-Route::resource('invitados', InvitadoController::class)->middleware('auth');
-Route::resource('roles', RoleController::class)->middleware('auth');
 
-Route::get('/invitados/registrar/{invitadoId}', [InvitadoController::class, 'registrar'])->name('invitados.registrar');
-Route::get('/invitados/validar-qr/{codigo}', [InvitadoController::class, 'validarQR'])->name('invitados.validar-qr');
-Route::get('invitados/generar-pdf/{invitado}', [InvitadoController::class, 'generarPDF'])->name('invitados.generarPDF');
+
+// Route::get('/invitados/registrar/{invitadoId}', [InvitadoController::class, 'registrar'])->name('invitados.registrar');
+// Route::get('/invitados/validar-qr/{codigo}', [InvitadoController::class, 'validarQR'])->name('invitados.validar-qr');
+// Route::get('invitados/generar-pdf/{invitado}', [InvitadoController::class, 'generarPDF'])->name('invitados.generarPDF');
 
 
 //app-mascotas
-Route::resource('mascotas', MascotaController::class);
-
-
+Route::resource('mascotas', MascotaController::class)->middleware('auth');
+Route::resource('usuarios',UserController::class)->middleware('auth');
+Route::resource('invitados', InvitadoController::class)->middleware('auth');
+Route::resource('roles', RoleController::class)->middleware('auth');
+Route::resource('reportes', ReportCasoController::class)->middleware('auth');
 
 Route::get('/url', function () {
     return view('url');
