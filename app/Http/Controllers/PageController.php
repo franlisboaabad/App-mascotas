@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mascota;
+use App\Models\ReportCaso;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -71,7 +72,21 @@ class PageController extends Controller
         Auth::login($user);
 
         // return redirect(RouteServiceProvider::HOME);
-        return view('page.home');
+        return view('page.panel');
+    }
+
+    public function registrarcaso(Request $request)
+    {
+        $request->validate([
+            'nombres' => ['required', 'string', 'max:255'],
+            'tipo_animal' => ['required', 'string', 'max:255'],
+            'descripcion_del_caso' => ['required', 'string', 'max:255'],
+            'contacto' => ['required', 'string', 'max:255'],
+        ]);
+
+        ReportCaso::create($request->all());
+
+        return back()->with('success', 'Se registro correctamente el caso.');
     }
 
 

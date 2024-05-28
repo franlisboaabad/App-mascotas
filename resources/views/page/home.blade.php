@@ -1,4 +1,5 @@
 @extends('layouts.page')
+@section('titulo','Inicio')
 @section('contenido')
     <section class="home-4">
         <div class=" petmark-slick-slider  home-slider dot-position-1" data-slick-setting="{

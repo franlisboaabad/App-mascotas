@@ -1,29 +1,49 @@
 @extends('layouts.page')
+@section('titulo','Reportar un caso')
 @section('contenido')
     <div class="container">
 
 
 
         @if (Auth::check())
-
-        <div class="title pt-3 pb-3">
-            <h1>Reportar Caso</h1>
-            <p>Porfavor llena todos los campos y acepta la ubicación en tiempo real, En caso el reporte sea por alguna
-                mascota perdida, podemos localizarlo de manera inmediata.</p>
-        </div>
+            <div class="title pt-3 pb-3">
+                <h1>Reporte de Mascotas Perdidas o Ayuda</h1>
+                <p>Porfavor llena todos los campos y acepta la ubicación en tiempo real, En caso el reporte sea por alguna
+                    mascota perdida, podemos localizarlo de manera inmediata.</p>
+            </div>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <form action="{{ route('registro') }}" method="POST">
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+
+
+                    <form action="{{ route('registrarcaso') }}" method="POST">
 
                         <div class="form-group">
                             <label for="">Nombre del reportante:</label>
-                            <input type="text" name="nombre" class="form-control" required>
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="text" name="nombres" class="form-control" required
+                                value="{{ Auth::user()->name }}">
                         </div>
 
                         <div class="form-group">
                             <label for="">Tipo de animal:</label>
-                            <select name="tipo_aniaml" id="" class="form-control">
+                            <select name="tipo_animal" id="" class="form-control">
                                 <option value="perro">Perro</option>
                                 <option value="gato">Gato</option>
                             </select>
@@ -31,7 +51,7 @@
 
                         <div class="form-group">
                             <label for="">Descripción del Caso:</label>
-                            <textarea id="descripcion" name="descripcion" rows="4" required class="form-control"></textarea>
+                            <textarea id="descripcion_del_caso" name="descripcion_del_caso" rows="4" required class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -39,11 +59,16 @@
                             <input type="file" name="imagen" class="form-control">
                         </div>
 
+                        <div class="form-group">
+                            <label for="contacto">Información de contacto:</label>
+                            <input type="text" id="contacto" name="contacto" required class="form-control">
+                        </div>
+
 
 
                         <div class="form-group">
-                            <input type="text" name="latitude" id="latitude" class="form-control" required>
-                            <input type="text" name="longitude" id="longitude" class="form-control" required>
+                            <input type="hidden" name="latitude" id="latitude" class="form-control" required>
+                            <input type="hidden" name="longitude" id="longitude" class="form-control" required>
                         </div>
 
                         <div class="form-group">
@@ -55,7 +80,7 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <iframe src="" frameborder="0" id="maps"></iframe>
+                    {{-- <iframe src="" frameborder="0" id="maps"></iframe> --}}
                 </div>
             </div>
         @else

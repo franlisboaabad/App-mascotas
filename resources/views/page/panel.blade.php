@@ -1,4 +1,5 @@
 @extends('layouts.page')
+@section('titulo','Mi Panel')
 @section('contenido')
 <div class="container">
     <h2>Bienvenido</h2> <br>

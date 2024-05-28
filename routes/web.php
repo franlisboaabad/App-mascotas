@@ -49,6 +49,7 @@ Route::get('/logout', [PageController::class, 'logout'])->name('logout');
 //Pages
 Route::get('/',[PageController::class, 'home'])->name('home');
 Route::get('reportar-caso',[PageController::class,'reportarcaso'])->name('reportarcaso');
+Route::post('registrar-caso',[PageController::class,'registrarcaso'])->name('registrarcaso');
 
 
 Route::resource('usuarios',UserController::class)->middleware('auth');
