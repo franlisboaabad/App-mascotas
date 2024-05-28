@@ -45,7 +45,7 @@
                             </div>
                             <!-- Category With Search -->
                             <div class="col-lg-5 col-md-6 order-3 order-md-2">
-                                <form class="category-widget">
+                                {{-- <form class="category-widget">
                                     <input type="text" name="search" placeholder="Search products ">
                                     <div class="search-form__group search-form__group--select">
                                         <select name="category " id="searchCategory"
@@ -72,15 +72,14 @@
                                         </select>
                                     </div>
                                     <button class="search-submit"><i class="fas fa-search"></i></button>
-                                </form>
+                                </form> --}}
                             </div>
                             <!-- Call Login & Track of Order -->
                             <div class="col-lg-4 col-md-6 col-sm-8 order-2 order-md-3">
                                 <div class="header-widget-2 text-center text-md-end">
                                     <div class="call-widget">
-                                        <p>CALL US NOW: <i class="icon ion-ios-telephone"></i><span
-                                                class="font-weight-mid">+91-012
-                                                345 678</span></p>
+                                        <p>Atención <i class="icon ion-ios-telephone"></i><span
+                                                class="font-weight-mid">+51 922 852 443</span></p>
                                     </div>
                                     <ul class="header-links">
                                         {{-- <li><a href="cart.html"><i class="fas fa-car-alt"></i> Track Your Order</a></li> --}}
@@ -110,116 +109,24 @@
                                 <nav class="main-navigation white-color">
                                     <!-- Mainmenu Start -->
                                     <ul class="mainmenu">
-                                        <li class="mainmenu__item menu-item-has-children ">
-                                            <a href="index.html" class="mainmenu__link">Home</a>
-                                            <ul class="sub-menu">
-                                                <li>
-                                                    <a href="index.html">Home 1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-2.html">Home 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-3.html">Home 3</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-4.html">Home 4</a>
-                                                </li>
-                                            </ul>
+                                        <li class="mainmenu__item">
+                                            <a href="/" class="mainmenu__link">Inicio</a>
                                         </li>
-                                        <li class="mainmenu__item menu-item-has-children">
-                                            <a href="#" class="mainmenu__link">Pages</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item-has-children">
-                                                    <a href="about-us.html">About Us</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="about-us.html">About Us 1</a></li>
-                                                        <li><a href="about-us-2.html">About Us 2</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children">
-                                                    <a href="contact.html">Contact</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="contact.html">Contact 1</a></li>
-                                                        <li><a href="contact-2.html">Contact 2</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children">
-                                                    <a href="service.html">Services</a>
-                                                    <ul class="sub-menu">
-                                                        <li>
-                                                            <a href="service.html">Services</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="service-2.html">Services 2</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="faq.html">Faq</a>
-                                                </li>
-                                                <li>
-                                                    <a href="404.html">404</a>
-                                                </li>
-                                                <li>
-                                                    <a href="cart.html">Cart</a>
-                                                </li>
-                                                <li>
-                                                    <a href="checkout.html">Checkout</a>
-                                                </li>
-                                                <li>
-                                                    <a href="wishlist.html">Wishlist</a>
-                                                </li>
-                                                <li>
-                                                    <a href="compare.html">Compare</a>
-                                                </li>
-                                                <li>
-                                                    <a href="my-account.html">My Account</a>
-                                                </li>
-                                                <li>
-                                                    <a href="login-register.html">Login &amp; Registration</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+
                                         <li class="mainmenu__item ">
-                                            <a href="portfolio.html" class="mainmenu__link">Portfolio</a>
+                                            <a href="portfolio.html" class="mainmenu__link">Comunidad</a>
                                         </li>
-                                        <li class="mainmenu__item menu-item-has-children ">
-                                            <a href="blog.html" class="mainmenu__link">Blog</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item-has-children">
-                                                    <a href="blog.html">Blog Gird</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a>
-                                                        </li>
-                                                        <li><a href="blog.html">Blog Full Width</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children">
-                                                    <a href="blog-list.html">Blog List</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="blog-list-left-sidebar.html">Blog List Left
-                                                                Sidebar</a></li>
-                                                        <li><a href="blog-list-right-sidebar.html">Blog List Right
-                                                                Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children">
-                                                    <a href="blog-details.html">Blog Details</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="blog-details-left-sidebar.html">Left Sidebar</a>
-                                                        </li>
-                                                        <li><a href="blog-details.html">Image Format</a></li>
-                                                        <li><a href="blog-details-video.html">Video Format</a></li>
-                                                        <li><a href="blog-details-gallery.html">Gallery Format</a></li>
-                                                        <li><a href="blog-details-audio.html">Audio Format</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+
+                                        <li class="mainmenu__item ">
+                                            <a href="portfolio.html" class="mainmenu__link">Blog</a>
                                         </li>
+
+                                        <li class="mainmenu__item ">
+                                            <a href="portfolio.html" class="mainmenu__link">Contacto</a>
+                                        </li>
+
                                         <li class="mainmenu__item menu-item-has-children ">
-                                            <a href="shop.html" class="mainmenu__link">Shop</a>
+                                            <a href="shop.html" class="mainmenu__link">Ayudanos a Ayudar</a>
                                             <ul class="megamenu three-column">
                                                 <li>
                                                     <a href="shop.html">Shop Page</a>
