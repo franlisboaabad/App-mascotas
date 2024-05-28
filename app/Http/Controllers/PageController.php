@@ -17,14 +17,31 @@ class PageController extends Controller
 
     public function home()
     {
+
         $mascotas = Mascota::get()->where('estado',1);
         return view('page.home', compact('mascotas'));
+
     }
 
     //registro desde la web
-    public function PageRegister()
+    public function pageregister()
     {
         return view('page.register');
+    }
+
+    public function acceso()
+    {
+        return view('page.acceso');
+    }
+
+    public function reportarcaso()
+    {
+        return view('page.reportarcaso');
+    }
+
+    public function panel()
+    {
+        return view('page.panel');
     }
 
 
@@ -53,9 +70,15 @@ class PageController extends Controller
 
         Auth::login($user);
 
-
-
         // return redirect(RouteServiceProvider::HOME);
         return view('page.home');
     }
+
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home'); // Redirige a la página de inicio de sesión
+    }
+
 }

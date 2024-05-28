@@ -9,10 +9,29 @@
     <link rel="stylesheet" href="{{ asset('/page/css/main.css') }}">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <title> Alfa huellitas Animal | Home </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+        @media(max-width: 576px) {
+            .home-4 {
+                margin-top: -50px !important;
+            }
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+        }
+    </style>
 </head>
 
 <body class=" petmark-theme-4">
     <div class="site-wrapper">
+
         <header class="header petmark-header-4">
             <div class="header-wrapper">
                 <!-- Site Wrapper Starts -->
@@ -38,7 +57,7 @@
                             <!-- Template Logo -->
                             <div class="col-lg-3 col-md-12 col-sm-4">
                                 <div class="site-brand  text-center text-lg-start">
-                                    <a href="index.html" class="brand-image">
+                                    <a href="/" class="brand-image">
                                         <img src="{{ asset('/page/images/main-logo--blue.png') }}" alt="">
                                     </a>
                                 </div>
@@ -85,10 +104,11 @@
                                         {{-- <li><a href="cart.html"><i class="fas fa-car-alt"></i> Track Your Order</a></li> --}}
                                         @if (Auth::check())
                                             <!-- El usuario ha iniciado sesión, muestra su email -->
-                                            <p>Bienvenido, {{ Auth::user()->email }} | <a href="{{  Auth::logout() }}">Salir</a></p>
+                                            <p>Bienvenido, {{ Auth::user()->name }} | <a href="{{ route('panel') }}"><i class="fas fa-user"></i> Panel</a>
                                         @else
                                             <!-- El usuario no ha iniciado sesión, muestra los enlaces de acceso y registro -->
-                                            <li><a href="/login"><i class="fas fa-user"></i> Acceder</a></li>
+                                            <li><a href="{{ route('acceso') }}"><i class="fas fa-user"></i> Acceder</a>
+                                            </li>
                                             <li><a href="/registro"><i class="fas fa-user"></i> Registro</a></li>
                                         @endif
 
@@ -129,53 +149,26 @@
                                             <a href="shop.html" class="mainmenu__link">Ayudanos a Ayudar</a>
                                             <ul class="megamenu three-column">
                                                 <li>
-                                                    <a href="shop.html">Shop Page</a>
+                                                    {{-- <a href="shop.html">Shop Page</a> --}}
                                                     <ul>
                                                         <li>
-                                                            <a href="shop-left-sidebar.html">Grid Left Sidebar</a>
+                                                            <a href="{{ route('reportarcaso') }}">Reportar Caso</a>
                                                         </li>
                                                         <li>
-                                                            <a href="shop-right-sidebar.html">Grid Right Sidebar</a>
+                                                            <a href="shop-right-sidebar.html">Adopta</a>
                                                         </li>
                                                         <li>
-                                                            <a href="shop-list.html">List Fullwidth</a>
+                                                            <a href="shop-list.html">Apadrina</a>
                                                         </li>
                                                         <li>
-                                                            <a href="shop-list-left-sidebar.html">List Left Sidebar</a>
+                                                            <a href="shop-list-left-sidebar.html">Voluntariado</a>
                                                         </li>
                                                         <li>
-                                                            <a href="shop-list-right-sidebar.html">List Right
-                                                                Sidebar</a>
+                                                            <a href="shop-list-right-sidebar.html">Donaciones</a>
                                                         </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details.html">Product Details 1</a>
-                                                    <ul>
-                                                        <li><a href="product-details.html">Product Details Page</a>
-                                                        </li>
-                                                        <li><a href="product-details-affiliate.html">Product Details
-                                                                Affiliate</a></li>
-                                                        <li><a href="product-details-grouped.html">Product Details
-                                                                Group</a></li>
-                                                        <li><a href="product-details-left-thumbnail.html">Left
-                                                                Thumbnail</a></li>
-                                                        <li><a href="product-details-right-thumbnail.html">Right
-                                                                Thumbnail</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="shop.html">Product Details 2</a>
-                                                    <ul>
-                                                        <!-- <li><a href="product-details-left-gallery.html">left Thumbnail</a></li> -->
-                                                        <li><a href="product-details-left-gallery.html">Left
-                                                                Gallery</a></li>
-                                                        <li><a href="product-details-right-gallery.html">Right
-                                                                Gallery</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
-
                                         </li>
                                     </ul>
                                     <!-- Mainmenu End -->
@@ -196,7 +189,7 @@
 
                     </div>
                 </div>
-                <div class="fixed-header sticky-init sticky-color">
+                {{-- <div class="fixed-header sticky-init sticky-color">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-3">
@@ -383,7 +376,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </header>
 
@@ -396,113 +389,6 @@
         </section>
 
 
-
-
-        <!-- Modal -->
-        <div class="modal fade modal-quick-view" id="quickModal" tabindex="-1" role="dialog"
-            aria-labelledby="quickModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="pm-product-details">
-                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close">
-
-                        </button>
-                        <div class="row">
-                            <!-- Blog Details Image Block -->
-                            <div class="col-md-6">
-                                <div class="image-block">
-                                    <!-- Zoomable IMage -->
-                                    <img id="zoom_03" src="images/product-details-1.jpg"
-                                        data-zoom-image="image/product/product-details/product-details-1.jpg"
-                                        alt="">
-
-                                    <!-- Product Gallery with Slick Slider -->
-                                    <div id="product-view-gallery" class="elevate-gallery">
-                                        <!-- Slick Single -->
-                                        <a href="#" class="gallary-item"
-                                            data-image="image/product/product-details/product-details-1.jpg"
-                                            data-zoom-image="image/product/product-details/product-details-1.jpg">
-                                            <img src="images/product-details-1.jpg" alt="">
-                                        </a>
-                                        <!-- Slick Single -->
-                                        <a href="#" class="gallary-item"
-                                            data-image="image/product/product-details/product-details-2.jpg"
-                                            data-zoom-image="image/product/product-details/product-details-2.jpg">
-                                            <img src="images/product-details-2.jpg" alt="">
-                                        </a>
-                                        <!-- Slick Single -->
-                                        <a href="#" class="gallary-item"
-                                            data-image="image/product/product-details/product-details-3.jpg"
-                                            data-zoom-image="image/product/product-details/product-details-3.jpg">
-                                            <img src="images/product-details-3.jpg" alt="">
-                                        </a>
-                                        <!-- Slick Single -->
-                                        <a href="#" class="gallary-item"
-                                            data-image="image/product/product-details/product-details-4.jpg"
-                                            data-zoom-image="image/product/product-details/product-details-4.jpg">
-                                            <img src="images/product-details-4.jpg" alt="">
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 mt-4 mt-lg-0">
-                                <div class="description-block">
-                                    <div class="header-block">
-                                        <h3>Diam vel neque</h3>
-                                    </div>
-                                    <!-- Price -->
-                                    <p class="price"><span class="old-price">250$</span>300$</p>
-                                    <!-- Rating Block -->
-                                    <div class="rating-block d-flex  mt--10 mb--15">
-                                        <p class="rating-text"><a href="#comment-form">See all features</a></p>
-                                    </div>
-                                    <!-- Blog Short Description -->
-                                    <div class="product-short-para">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue
-                                            nec est
-                                            tristique auctor. Donec non est at libero vulputate rutrum.
-                                        </p>
-                                    </div>
-                                    <div class="status">
-                                        <i class="fas fa-check-circle"></i>300 IN STOCK
-                                    </div>
-                                    <!-- Amount and Add to cart -->
-                                    <form action="./" class="add-to-cart">
-                                        <div class="count-input-block">
-                                            <input type="number" class="form-control text-center" value="1"
-                                                min="1">
-                                        </div>
-                                        <div class="btn-block">
-                                            <a href="#" class="btn btn-rounded btn-outlined--primary">Add to
-                                                cart</a>
-                                        </div>
-                                    </form>
-                                    <!-- Sharing Block 2 -->
-                                    <div class="share-block-2 mt--30">
-                                        <h4>SHARE THIS PRODUCT</h4>
-                                        <ul class="social-btns social-btns-3">
-                                            <li><a href="#" class="facebook"><i
-                                                        class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                                            </li>
-                                            <li><a href="#" class="google"><i
-                                                        class="fab fa-google-plus-g"></i></a></li>
-                                            <li><a href="#" class="pinterest"><i
-                                                        class="fab fa-pinterest-p"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i
-                                                        class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 
@@ -625,7 +511,7 @@
                         <li><a href="">Our Stores</a></li>
                     </ul>
                     <div class="payment-block pt-3">
-                        <img src="images/payment-icons.png" alt="">
+                        {{-- <img src="images/payment-icons.png" alt=""> --}}
                     </div>
                 </div>
             </div>
@@ -637,6 +523,7 @@
     <script src="{{ asset('/page/js/plugins.js') }}"></script>
     <script src="{{ asset('/page/js/ajax-mail.js') }}"></script>
     <script src="{{ asset('/page/js/custom.js') }}"></script>
+    @yield('js')
 
 
 </body>
